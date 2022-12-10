@@ -1,4 +1,5 @@
 <script setup>
+import { ref, computed } from "vue";
 let str;
 const items = [
   {
@@ -38,8 +39,7 @@ const items = [
     href: "https://console.firebase.google.com/u/0/?utm_source=firebase.google.com&utm_medium=referral",
     cat: "Init",
     desc: "",
-    code1:
-      "https://firebase.google.com/docs/firestore/quickstart?hl=en&authuser=0",
+    code1: `https://firebase.google.com/docs/firestore/quickstart?hl=en&authuser=0`,
     code2: ``,
   },
   {
@@ -116,6 +116,47 @@ console.log(make, miles); // Tesla 12000`,
     code3: ``,
     code4: ``,
   },
+  {
+    title: "Tailwind CSS colors",
+    href: "https://tailwindcss.com/docs/background-color",
+    cat: "TWcss",
+    desc: ``,
+    desc1: ``,
+    desc2: ``,
+    desc3: ``,
+    array1: [
+      { color: "neutral", srcbg: "bg-neutral-400", 200: "bg-neutral-200" },
+
+      {
+        color: "slate",
+        srcbg: "bg-slate-400",
+        srclight: "slate-200",
+        srcdark: "slate-500",
+      },
+      { color: "red", srcbg: "bg-red-400" },
+      { color: "yellow", srcbg: "bg-yellow-400" },
+      { color: "emerald", srcbg: "bg-emerald-400" },
+      { color: "gray", srcbg: "bg-gray-400" },
+      { color: "orange", srcbg: "bg-orange-400" },
+      { color: "amber", srcbg: "bg-amber-400" },
+      { color: "blue", srcbg: "bg-blue-400" },
+      { color: "green", srcbg: "bg-green-400" },
+      { color: "lime", srcbg: "bg-lime-400" },
+      { color: "teal", srcbg: "bg-teal-400" },
+      { color: "cyan", srcbg: "bg-cyan-400" },
+      { color: "purple", srcbg: "bg-purple-400" },
+      { color: "pink", srcbg: "bg-pink-400" },
+      { color: "rose", srcbg: "bg-rose-400" },
+      { color: "fuchsia", srcbg: "bg-fuchsia-400" },
+      { color: "stone", srcbg: "bg-stone-400" },
+      { color: "indigo", srcbg: "bg-indigo-400" },
+      { color: "sky", srcbg: "bg-sky-400" },
+    ],
+    code1: ``,
+    code2: ``,
+    code3: ``,
+    code4: ``,
+  },
 ];
 
 const copyURL = async (mytext) => {
@@ -125,11 +166,40 @@ const copyURL = async (mytext) => {
     alert("Cannot copy");
   }
 };
+
+const rainBowColorFrom = computed(() => {
+  let i = Math.floor(Math.random() * 9) * 100;
+
+  let color = [
+    "fuchsia",
+    "red",
+    "yellow",
+    "emerald",
+    "gray",
+    "orange",
+    "blue",
+    "green",
+    "teal",
+    "cyan",
+    "purple",
+    "pink",
+  ];
+  let i2 = Math.floor(Math.random() * color.length);
+  let randomColor = color[i2];
+
+  return `from-${randomColor}-${i}`;
+
+  // if (props.rainBow === "heavy") return "bg-red-400 text-black";
+  // else if (props.rainBow === "light") return "bg-blue-300 text-black";
+  // else return "bg-gray-800";
+});
+
+const littleOn = true;
 </script>
 
 <template>
   <div class="p-2 sm:p-7">
-    <div class="flex flex-col sm:flex-row sm:flex-wrap gap-4">
+    <div class="flex flex-col sm:flex-row sm:flex-wrap gap-4 flex-wrap">
       <div
         v-for="item in items"
         class="bg-fuchsia-200 bg-opacity-5 p-1 sm:px-4 rounded-md"
@@ -137,13 +207,22 @@ const copyURL = async (mytext) => {
         <a
           :href="item.href"
           target="_blank"
-          class="font-extrabold text-transparent text-xl bg-clip-text bg-gradient-to-r from-purple-400 to-emerald-200"
+          class="font-extrabold text-transparent text-xl bg-clip-text bg-gradient-to-r from-green-400 to-cyan-200"
         >
           {{ item.title }}
         </a>
         <h3 v-if="item.desc" class="text-[0.8rem] italic text-gray-400">
           {{ item.desc }}
         </h3>
+        <div class="flex flex-row flex-wrap w-full gap-2" v-if="item.array1">
+          <span
+            v-for="i in item.array1"
+            @click="copyURL(i.srcbg)"
+            class="flex flex-row text-cyan-700 sm:w-16 sm:h-8 rounded-md justify-center px-1"
+            :class="i.srcbg"
+            >{{ i.color }}</span
+          >
+        </div>
         <h2
           @click="copyURL(item.code1)"
           v-if="item.code1"

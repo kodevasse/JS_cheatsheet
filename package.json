@@ -8,6 +8,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@highlightjs/vue-plugin": "^2.1.2",
     "daisyui": "^2.43.0",
     "firebase": "^9.15.0",
     "pinia": "^2.0.26",

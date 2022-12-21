@@ -2,6 +2,7 @@
 import { ref, computed, reactive } from "vue";
 import { useStoreSheet } from "@/stores/storeSheet";
 import { useStoreCommon } from "@/stores/storeCommon";
+import "highlight.js/styles/stackoverflow-dark.css";
 
 const storeSheet = useStoreSheet();
 const storeCommon = useStoreCommon();
@@ -135,6 +136,8 @@ const addToFirestore = async () => {
   // reset fields
   resetFields();
 };
+const code = `import { useStoreSheet } from "@/stores/storeSheet";
+import { useStoreCommon } from "@/stores/storeCommon";`;
 </script>
 
 <template>
@@ -249,12 +252,12 @@ const addToFirestore = async () => {
       <div class="flex flex-col sm:flex-row sm:flex-wrap gap-4">
         <div
           v-for="item in items"
-          class="bg-fuchsia-200 bg-opacity-5 p-1 sm:px-4 rounded-md max-w-3xl h-fit max-h-96 overflow-y-auto"
+          class="bg-slate-900 space-y-0.5 bg-opacity-60 p-5 sm:px-4 rounded-md max-w-3xl h-fit max-h-72 overflow-y-auto"
         >
           <a
             :href="item.href"
             target="_blank"
-            class="font-extrabold text-transparent text-xl bg-clip-text bg-gradient-to-r from-green-400 to-cyan-200"
+            class="font-extrabold text-transparent text-xl bg-clip-text bg-gradient-to-r from-red-400 to-yellow-200"
           >
             {{ item.title }}
           </a>
@@ -270,44 +273,49 @@ const addToFirestore = async () => {
               >{{ i.color }}</span
             >
           </div>
-          <h2
-            @click="copyURL(item.code1)"
-            v-if="item.code1"
-            class="text-orange-400"
-          >
-            {{ item.code1 }}
-          </h2>
+
+          <div class="rounded-md overflow-auto">
+            <highlightjs
+              @click="copyURL(item.code1)"
+              class="text-sm"
+              autodetect
+              v-if="item.code1"
+              :code="item.code1"
+            />
+          </div>
+
           <h3 v-if="item.desc2" class="text-[0.8rem] italic text-gray-400">
             {{ item.desc2 }}
           </h3>
-          <h2
+          <highlightjs
             @click="copyURL(item.code2)"
+            class="text-sm"
+            autodetect
             v-if="item.code2"
-            class="text-orange-300"
-          >
-            {{ item.code2 }}
-          </h2>
+            :code="item.code2"
+          />
           <h3 v-if="item.desc3" class="text-[0.8rem] italic text-gray-400">
             {{ item.desc3 }}
           </h3>
-          <h2
+          <highlightjs
             @click="copyURL(item.code3)"
+            class="text-sm"
+            autodetect
             v-if="item.code3"
-            class="text-orange-200"
-          >
-            {{ item.code3 }}
-          </h2>
+            :code="item.code3"
+          />
           <h3 v-if="item.desc4" class="text-[0.8rem] italic text-gray-400">
             {{ item.desc4 }}
           </h3>
           <div class="grid grid-cols-2">
-            <h2
+            <highlightjs
               @click="copyURL(item.code4)"
+              class="text-sm"
+              autodetect
               v-if="item.code4"
-              class="text-orange-100"
-            >
-              {{ item.code4 }}
-            </h2>
+              :code="item.code4"
+            />
+
             <svg
               v-if="showEditDelete"
               @click="storeSheet.deleteItem(item.id)"
@@ -344,5 +352,8 @@ const addToFirestore = async () => {
 .v-enter-from,
 .v-leave-to {
   opacity: 0;
+}
+.hljs-string {
+  background-color: rgba(red, green, blue);
 }
 </style>

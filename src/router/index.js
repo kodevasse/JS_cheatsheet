@@ -11,7 +11,7 @@ const router = createRouter({
       component: MainView,
     },
     {
-      path: "/",
+      path: "/payment",
       name: "payment",
       component: () => import("../views/PaymentView.vue"),
     },

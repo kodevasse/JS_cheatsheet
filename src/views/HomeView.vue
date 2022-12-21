@@ -6,7 +6,7 @@ const items = [
     title: "Vue Init",
     href: "https://vuejs.org/guide/introduction.html",
     cat: "Init",
-    desc: "",
+    desc1: "",
     code1: "npm init vue@latest",
     code2: "",
   },
@@ -14,7 +14,7 @@ const items = [
     title: "Tailwind CSS Vue Vite",
     href: "https://tailwindcss.com/docs/guides/vite#vue",
     cat: "Init",
-    desc: "",
+    desc1: "",
     code1: "npm install -D tailwindcss postcss autoprefixer",
     code2: "npx tailwindcss init -p",
     code3: `
@@ -30,7 +30,7 @@ const items = [
     title: "Daisy UI",
     href: "https://daisyui.com/docs/install/",
     cat: "Init",
-    desc: "",
+    desc1: "",
     code1: "npm i daisyui",
     code2: `plugins: [require("daisyui")],`,
   },
@@ -38,7 +38,7 @@ const items = [
     title: "Firebase",
     href: "https://console.firebase.google.com/u/0/?utm_source=firebase.google.com&utm_medium=referral",
     cat: "Init",
-    desc: "",
+    desc1: "",
     code1: `https://firebase.google.com/docs/firestore/quickstart?hl=en&authuser=0`,
     code2: ``,
   },
@@ -46,7 +46,7 @@ const items = [
     title: "VueUse",
     href: "https://vueuse.org/guide/",
     cat: "Init",
-    desc: "",
+    desc1: "",
     code1: "npm i @vueuse/core",
     code2: ``,
   },
@@ -54,12 +54,12 @@ const items = [
     title: "Promises",
     href: "https://github.com/metagrover/ES6-for-humans",
     cat: "JS",
-    desc: `ES6 has native support for promises. A promise is an object that is waiting for an asynchronous operation to complete, and when that operation completes, the promise is either fulfilled(resolved) or rejected.
+    desc1: `ES6 has native support for promises. A promise is an object that is waiting for an asynchronous operation to complete, and when that operation completes, the promise is either fulfilled(resolved) or rejected.
 
 The standard way to create a Promise is by using the new Promise() constructor which accepts a handler that is given two functions as parameters. The first handler (typically named resolve) is a function to call with the future value when it's ready; and the second handler (typically named reject) is a function to call to reject the Promise if it can't resolve the future value.`,
-    desc1: `Every Promise has a method named then which takes a pair of callbacks. The first callback is called if the promise is resolved, while the second is called if the promise is rejected.`,
-    desc2: `Returning a value from then callbacks will pass the value to the next then callback.`,
-    desc3: `When returning a promise, the resolved value of the promise will get passed to the next callback to effectively chain them together. This is a simple technique to avoid "callback hell".`,
+    desc2: `Every Promise has a method named then which takes a pair of callbacks. The first callback is called if the promise is resolved, while the second is called if the promise is rejected.`,
+    desc3: `Returning a value from then callbacks will pass the value to the next then callback.`,
+    desc4: `When returning a promise, the resolved value of the promise will get passed to the next callback to effectively chain them together. This is a simple technique to avoid "callback hell".`,
     code1: `const p = new Promise((resolve, reject) => {
     if (/* condition */) {
         resolve(/* value */);  // fulfilled successfully
@@ -86,8 +86,8 @@ p.then(eventuallyAdd1)
     title: "7. Array and Object Destructuring",
     href: "https://github.com/metagrover/ES6-for-humans",
     cat: "JS",
-    desc: `Destructuring helps in avoiding the need for temp variables when dealing with object and arrays.`,
-    desc1: ``,
+    desc1: `Destructuring helps in avoiding the need for temp variables when dealing with object and arrays.`,
+
     desc2: ``,
     desc3: ``,
     code1: `function foo() {
@@ -120,8 +120,8 @@ console.log(make, miles); // Tesla 12000`,
     title: "Tailwind CSS colors",
     href: "https://tailwindcss.com/docs/background-color",
     cat: "TWcss",
-    desc: ``,
     desc1: ``,
+
     desc2: ``,
     desc3: ``,
     array1: [
@@ -211,8 +211,8 @@ const littleOn = true;
         >
           {{ item.title }}
         </a>
-        <h3 v-if="item.desc" class="text-[0.8rem] italic text-gray-400">
-          {{ item.desc }}
+        <h3 v-if="item.desc1" class="text-[0.8rem] italic text-gray-400">
+          {{ item.desc1 }}
         </h3>
         <div class="flex flex-row flex-wrap w-full gap-2" v-if="item.array1">
           <span
@@ -230,8 +230,8 @@ const littleOn = true;
         >
           {{ item.code1 }}
         </h2>
-        <h3 v-if="item.desc1" class="text-[0.8rem] italic text-gray-400">
-          {{ item.desc1 }}
+        <h3 v-if="item.desc2" class="text-[0.8rem] italic text-gray-400">
+          {{ item.desc2 }}
         </h3>
         <h2
           @click="copyURL(item.code2)"
@@ -240,8 +240,8 @@ const littleOn = true;
         >
           {{ item.code2 }}
         </h2>
-        <h3 v-if="item.desc2" class="text-[0.8rem] italic text-gray-400">
-          {{ item.desc2 }}
+        <h3 v-if="item.desc3" class="text-[0.8rem] italic text-gray-400">
+          {{ item.desc3 }}
         </h3>
         <h2
           @click="copyURL(item.code3)"
@@ -250,8 +250,8 @@ const littleOn = true;
         >
           {{ item.code3 }}
         </h2>
-        <h3 v-if="item.desc3" class="text-[0.8rem] italic text-gray-400">
-          {{ item.desc3 }}
+        <h3 v-if="item.desc4" class="text-[0.8rem] italic text-gray-400">
+          {{ item.desc4 }}
         </h3>
         <h2
           @click="copyURL(item.code4)"

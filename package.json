@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "daisyui": "^2.43.0",
+    "firebase": "^9.15.0",
     "pinia": "^2.0.26",
     "vue": "^3.2.45",
     "vue-router": "^4.1.6"

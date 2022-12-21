@@ -138,7 +138,7 @@ const addToFirestore = async () => {
 </script>
 
 <template>
-  <div>
+  <div class="">
     <Transition>
       <div
         class="flex flex-col items-center mt-5"

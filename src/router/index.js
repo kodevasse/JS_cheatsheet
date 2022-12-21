@@ -11,6 +11,11 @@ const router = createRouter({
       component: MainView,
     },
     {
+      path: "/",
+      name: "payment",
+      component: () => import("../views/PaymentView.vue"),
+    },
+    {
       path: "/promises",
       name: "promises",
       // route level code-splitting

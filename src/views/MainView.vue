@@ -139,107 +139,111 @@ const addToFirestore = async () => {
 
 <template>
   <div>
-    <div
-      class="flex flex-col items-center mt-5"
-      v-if="storeCommon.showAddNewCode"
-    >
+    <Transition>
       <div
-        class="bg-gray-900 bg-opacity-70 rounded-md flex flex-col flex-wrap items-center w-1/2 p-4 space-y-2"
+        class="flex flex-col items-center mt-5"
+        v-if="storeCommon.showAddNewCode"
       >
-        <div class="w-full flex justify-center flex-row">
-          <input
-            type="text"
-            placeholder="Title"
-            class="border text-xl p-1 w-2/5 bg-gray-900 placeholder:text-teal-400 rounded-md border-gray-700 focus:outline-none focus:bg-gray-800"
-            v-model="newTitle"
-          />
-          <input
-            type="text"
-            placeholder="Category"
-            class="border bg-gray-900 placeholder:text-teal-400 rounded-md border-gray-700 p-1 ml-2 w-1/6 focus:outline-none focus:bg-gray-800"
-            v-model="newCat"
-          />
-          <input
-            type="text"
-            placeholder="URL to docs.."
-            class="border bg-gray-900 placeholder:text-teal-400 rounded-md border-gray-700 p-1 ml-2 w-2/5 focus:outline-none focus:bg-gray-800"
-            v-model="newHref"
-          />
-        </div>
-        <div class="w-full flex justify-center flex-row">
-          <input
-            type="text"
-            placeholder="Description 1..."
-            class="border bg-gray-900 placeholder:text-orange-400 placeholder:opacity-60 rounded-md w-1/2 border-orange-400 border-opacity-40 p-1 ml-4 focus:outline-none focus:bg-gray-800"
-            v-model="newDesc1"
-          />
-          <input
-            type="text"
-            placeholder="Code line 1..."
-            class="border bg-gray-900 placeholder:text-orange-400 rounded-md w-1/2 ml-2 border-orange-400 border-opacity-40 p-1 mr-4 placeholder:opacity-60 focus:outline-none focus:bg-gray-800"
-            v-model="newCode1"
-          />
-        </div>
-        <div class="w-full flex justify-center flex-row">
-          <input
-            type="text"
-            placeholder="Description 2..."
-            class="border bg-gray-900 placeholder:text-orange-300 rounded-md w-1/2 placeholder:opacity-60 border-orange-300 border-opacity-40 p-1 ml-4 focus:outline-none focus:bg-gray-800"
-            v-model="newDesc2"
-          />
-          <input
-            type="text"
-            placeholder="Code line 2..."
-            class="border bg-gray-900 placeholder:text-orange-300 rounded-md w-1/2 ml-2 border-orange-300 border-opacity-40 p-1 mr-4 placeholder:opacity-60 focus:outline-none focus:bg-gray-800"
-            v-model="newCode2"
-          />
-        </div>
-        <div class="w-full flex justify-center flex-row">
-          <input
-            type="text"
-            placeholder="Description 3..."
-            class="border bg-gray-900 placeholder:text-orange-200 rounded-md w-1/2 border-orange-200 border-opacity-40 p-1 ml-4 placeholder:opacity-60 focus:outline-none focus:bg-gray-800"
-            v-model="newDesc3"
-          />
-          <input
-            type="text"
-            placeholder="Code line 3..."
-            class="border bg-gray-900 placeholder:text-orange-200 rounded-md w-1/2 ml-2 border-orange-200 border-opacity-40 p-1 mr-4 placeholder:opacity-60 focus:outline-none focus:bg-gray-800"
-            v-model="newCode3"
-          />
-        </div>
-        <div class="w-full flex justify-center flex-row">
-          <input
-            type="text"
-            placeholder="Description 4..."
-            class="border bg-gray-900 placeholder:text-orange-100 rounded-md w-1/2 border-orange-100 border-opacity-40 p-1 ml-4 placeholder:opacity-60 focus:outline-none focus:bg-gray-800"
-            v-model="newDesc4"
-          />
+        <div
+          class="bg-gray-900 bg-opacity-70 rounded-md flex flex-col flex-wrap items-center w-1/2 p-4 space-y-2"
+        >
+          <div class="w-full flex justify-center flex-row">
+            <input
+              type="text"
+              placeholder="Title"
+              class="border text-xl p-1 w-2/5 bg-gray-900 placeholder:text-teal-400 rounded-md border-gray-700 focus:outline-none focus:bg-gray-800"
+              v-model="newTitle"
+            />
+            <input
+              type="text"
+              placeholder="Category"
+              class="border bg-gray-900 placeholder:text-teal-400 rounded-md border-gray-700 p-1 ml-2 w-1/6 focus:outline-none focus:bg-gray-800"
+              v-model="newCat"
+            />
+            <input
+              type="text"
+              placeholder="URL to docs.."
+              class="border bg-gray-900 placeholder:text-teal-400 rounded-md border-gray-700 p-1 ml-2 w-2/5 focus:outline-none focus:bg-gray-800"
+              v-model="newHref"
+            />
+          </div>
+          <div class="w-full flex justify-center flex-row">
+            <input
+              type="text"
+              placeholder="Description 1..."
+              class="border bg-gray-900 placeholder:text-orange-400 placeholder:opacity-60 rounded-md w-1/2 border-orange-400 border-opacity-40 p-1 ml-4 focus:outline-none focus:bg-gray-800"
+              v-model="newDesc1"
+            />
+            <input
+              type="text"
+              placeholder="Code line 1..."
+              class="border bg-gray-900 placeholder:text-orange-400 rounded-md w-1/2 ml-2 border-orange-400 border-opacity-40 p-1 mr-4 placeholder:opacity-60 focus:outline-none focus:bg-gray-800"
+              v-model="newCode1"
+            />
+          </div>
+          <div class="w-full flex justify-center flex-row">
+            <input
+              type="text"
+              placeholder="Description 2..."
+              class="border bg-gray-900 placeholder:text-orange-300 rounded-md w-1/2 placeholder:opacity-60 border-orange-300 border-opacity-40 p-1 ml-4 focus:outline-none focus:bg-gray-800"
+              v-model="newDesc2"
+            />
+            <input
+              type="text"
+              placeholder="Code line 2..."
+              class="border bg-gray-900 placeholder:text-orange-300 rounded-md w-1/2 ml-2 border-orange-300 border-opacity-40 p-1 mr-4 placeholder:opacity-60 focus:outline-none focus:bg-gray-800"
+              v-model="newCode2"
+            />
+          </div>
+          <div class="w-full flex justify-center flex-row">
+            <input
+              type="text"
+              placeholder="Description 3..."
+              class="border bg-gray-900 placeholder:text-orange-200 rounded-md w-1/2 border-orange-200 border-opacity-40 p-1 ml-4 placeholder:opacity-60 focus:outline-none focus:bg-gray-800"
+              v-model="newDesc3"
+            />
+            <input
+              type="text"
+              placeholder="Code line 3..."
+              class="border bg-gray-900 placeholder:text-orange-200 rounded-md w-1/2 ml-2 border-orange-200 border-opacity-40 p-1 mr-4 placeholder:opacity-60 focus:outline-none focus:bg-gray-800"
+              v-model="newCode3"
+            />
+          </div>
+          <div class="w-full flex justify-center flex-row">
+            <input
+              type="text"
+              placeholder="Description 4..."
+              class="border bg-gray-900 placeholder:text-orange-100 rounded-md w-1/2 border-orange-100 border-opacity-40 p-1 ml-4 placeholder:opacity-60 focus:outline-none focus:bg-gray-800"
+              v-model="newDesc4"
+            />
 
+            <input
+              type="text"
+              placeholder="Code line 4..."
+              class="border bg-gray-900 placeholder:text-orange-100 rounded-md w-1/2 ml-2 border-orange-100 border-opacity-40 p-1 mr-4 placeholder:opacity-60 focus:outline-none focus:bg-gray-800"
+              v-model="newCode4"
+            />
+          </div>
           <input
             type="text"
-            placeholder="Code line 4..."
-            class="border bg-gray-900 placeholder:text-orange-100 rounded-md w-1/2 ml-2 border-orange-100 border-opacity-40 p-1 mr-4 placeholder:opacity-60 focus:outline-none focus:bg-gray-800"
-            v-model="newCode4"
+            placeholder="Array 1 goes here.."
+            class="hidden border bg-gray-900 placeholder:text-fuchsia-200 rounded-md w-1/2 ml-2 border-fuchsia-200 border-opacity-40 p-1 mr-4 placeholder:opacity-60 focus:outline-none focus:bg-gray-800"
+            v-model="newArray1"
           />
-        </div>
-        <input
-          type="text"
-          placeholder="Array 1 goes here.."
-          class="hidden border bg-gray-900 placeholder:text-fuchsia-200 rounded-md w-1/2 ml-2 border-fuchsia-200 border-opacity-40 p-1 mr-4 placeholder:opacity-60 focus:outline-none focus:bg-gray-800"
-          v-model="newArray1"
-        />
-        <div class="w-2/3 flex flex-row justify-between items-center">
-          <button class="btn btn-success" @click="addToFirestore()">Add</button>
-          <button
-            class="btn btn-xs btn-warning"
-            @click="showEditDelete = !showEditDelete"
-          >
-            Show delete
-          </button>
+          <div class="w-2/3 flex flex-row justify-between items-center">
+            <button class="btn btn-success" @click="addToFirestore()">
+              Add
+            </button>
+            <button
+              class="btn btn-xs btn-warning"
+              @click="showEditDelete = !showEditDelete"
+            >
+              Show delete
+            </button>
+          </div>
         </div>
       </div>
-    </div>
+    </Transition>
 
     <div class="p-2 sm:p-7">
       <div class="flex flex-col sm:flex-row sm:flex-wrap gap-4">
@@ -330,3 +334,15 @@ const addToFirestore = async () => {
     </div>
   </div>
 </template>
+
+<style scoped>
+/* we will explain what these classes do next! */
+.v-enter-active,
+.v-leave-active {
+  transition: opacity 0.5s ease;
+}
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
+}
+</style>

@@ -1,6 +1,6 @@
-# promises01
+# Javascript, vuejs ++ web developer cheatsheet
 
-This template should help get you started developing with Vue 3 in Vite.
+Vue 3 in Vite connected to firebase/firestore to easy add or delete your own code snippets
 
 ## Recommended IDE Setup
 

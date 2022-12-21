@@ -249,7 +249,7 @@ const addToFirestore = async () => {
       <div class="flex flex-col sm:flex-row sm:flex-wrap gap-4">
         <div
           v-for="item in items"
-          class="bg-fuchsia-200 bg-opacity-5 p-1 sm:px-4 rounded-md max-w-3xl max-h-96 overflow-y-auto"
+          class="bg-fuchsia-200 bg-opacity-5 p-1 sm:px-4 rounded-md max-w-3xl h-fit max-h-96 overflow-y-auto"
         >
           <a
             :href="item.href"

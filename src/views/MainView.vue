@@ -227,12 +227,15 @@ onMounted(() => {
 
 <template>
   <div class="flex flex-col justify-center items-center space-x-3 mt-2">
-    <input
-      placeholder="Search titles.."
-      class="sm:w-1/4 w-2/4 input border-lime-400 border-opacity-50"
-      v-model="searchText"
-    />
-    <div class="flex flex-row space-x-1 mt-2">
+    <div class="flex flex-row justify-center items-center w-full">
+      <input
+        placeholder="Search titles.."
+        class="sm:w-2/5 w-2/4 input border-lime-400 border-opacity-50"
+        v-model="searchText"
+      />
+      <span class="ml-3">{{ storeSheet.getItemsCount }} snippets</span>
+    </div>
+    <div class="flex flex-row space-x-1 mt-2 flex-wrap">
       <p
         class="rounded-xl bg-gray-900 px-3 py-0.5 text-gray-400 active:text-lime-400 cursor-pointer"
         v-for="cat in catValues2"
@@ -339,10 +342,10 @@ onMounted(() => {
           <div class="w-2/3 flex flex-row justify-between items-center">
             <div
               @click="addToFirestore()"
-              class="p-0.5 rounded-md bg-gradient-to-r from-teal-200 to-lime-300"
+              class="p-0.5 rounded-md bg-gradient-to-r from-teal-200 to-lime-300 mt-1"
             >
               <button
-                class="hover:bg-gray-800 transition-all px-6 py-2 text-teal-500 bg-gray-900"
+                class="hover:bg-gray-800 transition-all px-6 sm:px-3 sm:py-2 text-teal-500 bg-gray-900"
               >
                 Add to site
               </button>

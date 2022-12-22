@@ -120,4 +120,21 @@ export const useStoreSheet = defineStore("storeSheet", {
       });
     },
   },
+  getters: {
+    getItemsCount: (state) => {
+      return (id) => {
+        return state.notes.filter((note) => note.id === id)[0].content;
+      };
+    },
+    getItemsCount: (state) => {
+      return state.items.length;
+    },
+    totalCharactersCount: (state) => {
+      let count = 0;
+      state.notes.forEach((note) => {
+        count += note.content.length;
+      });
+      return count;
+    },
+  },
 });

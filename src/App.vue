@@ -12,30 +12,29 @@ storeSheet.init();
   <div>
     <header class="">
       <nav
-        class="flex flex-col items-center gap-x-5 pl-5 text-teal-300 bg-teal-900 opacity-70 bg-opacity-30 p-2 w-full"
+        class="flex flex-col items-center gap-x-5 pl-5 text-teal-300 bg-slate-900 bg-opacity-30 p-2 w-full"
       >
         <h1
-          class="font-extrabold text-transparent text-xl bg-clip-text bg-gradient-to-r from-emerald-300 to-sky-400"
+          class="font-extrabold text-transparent text-xl bg-clip-text bg-gradient-to-r from-lime-400 to-amber-300"
         >
           Web development code snippets
         </h1>
-        <div class="flex flex-row">
-          <RouterLink class="p-1 mr-4 hover:text-teal-500" to="/"
+        <div class="flex flex-row mt-1">
+          <RouterLink class="p-1 mr-4 text-lime-400 hover:text-teal-500" to="/"
             >All</RouterLink
           >
           <RouterLink
-            class="p-1 mr-4 hover:text-teal-500 text-teal-600"
+            class="p-1 mr-4 hover:text-teal-500 text-lime-600"
             to="/payment"
             >Payment<span
-              class="absolute text-[0.65rem] text-lime-400 -ml-8 -mt-0.5"
+              class="absolute text-[0.65rem] text-green-500 -ml-8 -mt-0.5"
               >ongoing</span
             ></RouterLink
           >
           <RouterLink
-            class="p-1 mr-4 hover:text-teal-500 text-teal-600"
+            class="p-1 mr-4 hover:text-teal-500 text-lime-600"
             to="/payment"
-            >Web3<span
-              class="absolute text-[0.65rem] text-fuchsia-400 -ml-8 -mt-1"
+            >Web3<span class="absolute text-[0.65rem] text-red-200 -ml-8 -mt-1"
               >comming</span
             ></RouterLink
           >

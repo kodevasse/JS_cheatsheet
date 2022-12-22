@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "../views/HomeView.vue";
 import MainView from "../views/MainView.vue";
+import PaymentView from "../views/PaymentView.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -13,7 +14,8 @@ const router = createRouter({
     {
       path: "/payment",
       name: "payment",
-      component: () => import("../views/PaymentView.vue"),
+
+      component: PaymentView,
     },
     {
       path: "/promises",

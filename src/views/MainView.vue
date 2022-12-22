@@ -1,11 +1,12 @@
 <script setup>
-import { ref, computed, reactive } from "vue";
+import { ref, computed, reactive, onMounted, watch } from "vue";
 import { useStoreSheet } from "@/stores/storeSheet";
 import { useStoreCommon } from "@/stores/storeCommon";
 import "highlight.js/styles/stackoverflow-dark.css";
 
 const storeSheet = useStoreSheet();
 const storeCommon = useStoreCommon();
+const searchText = ref("");
 
 let str;
 const items = computed(() => {
@@ -74,7 +75,7 @@ const resetFields = () => {
 const showEditDelete = ref(false);
 const littleOn = true;
 const newTitle = ref("");
-const newCat = ref("");
+const newCat = ref("js");
 const newHref = ref("");
 const newDesc1 = ref("");
 const newDesc2 = ref("");
@@ -138,13 +139,112 @@ const addToFirestore = async () => {
 };
 const code = `import { useStoreSheet } from "@/stores/storeSheet";
 import { useStoreCommon } from "@/stores/storeCommon";`;
+
+// searching in title and text
+const itemsFiltered = computed(() => {
+  let items = computed(() => {
+    return storeSheet.items.sort((a, b) => {
+      let aTotalChars = 0;
+      let bTotalChars = 0;
+
+      // Calculate the total number of characters in each object
+      for (const key in a) {
+        if (a.hasOwnProperty(key) && typeof a[key] !== "undefined") {
+          aTotalChars += a[key].length;
+        }
+      }
+      for (const key in b) {
+        if (b.hasOwnProperty(key) && typeof b[key] !== "undefined") {
+          bTotalChars += b[key].length;
+        }
+      }
+
+      // Compare the total number of characters in each object
+      if (aTotalChars > bTotalChars) {
+        return -1;
+      }
+      if (aTotalChars < bTotalChars) {
+        return 1;
+      }
+      return 0;
+    });
+  });
+  const titleSearch = computed(() => {
+    return items.value.filter(
+      (item) =>
+        item.title.toLowerCase().includes(searchText.value.toLowerCase()) ||
+        searchText.value.toLowerCase().includes(item.title.toLowerCase())
+    );
+  });
+  return titleSearch.value;
+  // const desc1Search = computed(() => {
+  //   return titleSearch.value.filter(
+  //     (item) =>
+  //       item.desc1.toLowerCase().includes(searchText.value.toLowerCase()) ||
+  //       searchText.value.toLowerCase().includes(item.desc1.toLowerCase())
+  //   );
+  // });
+  // return desc1Search.value;
+});
+const catValues2 = ref([]);
+// setTimeout(() => {
+//   items.value.forEach((item) => {
+//     if (!catValues2.value.includes(item.cat)) {
+//       catValues2.value.push(item.cat);
+//     }
+//   });
+// }, "1000");
+watch(itemsFiltered, (newValue) => {
+  newValue.forEach((item) => {
+    if (!catValues2.value.includes(item.cat)) {
+      catValues2.value.push(item.cat);
+    }
+  });
+});
+const catSelector = [
+  "vue",
+  "js",
+  "npm",
+  "TWCSS",
+  "object",
+  "vite",
+  "icons",
+  "CSS",
+  "tips",
+  "animations",
+];
+const getCat = () => {
+  itemsFiltered.value.forEach((item) => {
+    if (!catValues2.value.includes(item.cat)) {
+      catValues2.value.push(item.cat);
+    }
+  });
+};
+onMounted(() => {
+  getCat();
+});
 </script>
 
 <template>
+  <div class="flex flex-col justify-center items-center space-x-3 mt-2">
+    <input
+      placeholder="Search titles.."
+      class="sm:w-1/4 w-2/4 input border-lime-400 border-opacity-50"
+      v-model="searchText"
+    />
+    <div class="flex flex-row space-x-1 mt-2">
+      <p
+        class="rounded-xl bg-gray-900 px-3 py-0.5 text-gray-400 active:text-lime-400 cursor-pointer"
+        v-for="cat in catValues2"
+      >
+        {{ cat }}
+      </p>
+    </div>
+  </div>
   <div class="">
     <Transition>
       <div
-        class="flex flex-col items-center mt-5"
+        class="flex flex-col items-center mt-1"
         v-if="storeCommon.showAddNewCode"
       >
         <div
@@ -157,12 +257,15 @@ import { useStoreCommon } from "@/stores/storeCommon";`;
               class="border text-xl p-1 sm:w-2/5 bg-gray-900 placeholder:text-teal-400 rounded-md border-gray-700 focus:outline-none focus:bg-gray-800"
               v-model="newTitle"
             />
-            <input
-              type="text"
+            <select
               placeholder="Category"
               class="border bg-gray-900 placeholder:text-teal-400 rounded-md border-gray-700 p-1 sm:ml-2 sm:w-1/6 focus:outline-none focus:bg-gray-800"
               v-model="newCat"
-            />
+            >
+              <option class="" v-for="choice in catSelector" selected>
+                {{ choice }}
+              </option>
+            </select>
             <input
               type="text"
               placeholder="URL to docs.."
@@ -256,19 +359,22 @@ import { useStoreCommon } from "@/stores/storeCommon";`;
       </div>
     </Transition>
 
-    <div class="p-2 sm:p-7">
+    <div class="p-2 sm:p-3 sm:pl-4">
       <div class="flex flex-col sm:flex-row sm:flex-wrap gap-4">
         <div
-          v-for="item in items"
-          class="bg-slate-900 space-y-0.5 bg-opacity-60 p-5 sm:px-4 rounded-md max-w-3xl h-fit max-h-72 overflow-y-auto"
+          v-for="item in itemsFiltered"
+          class="bg-slate-900 space-y-0.5 bg-opacity-60 p-5 sm:px-4 rounded-md xl:max-w-2xl md:max-w-4xl h-fit max-h-72 overflow-y-auto"
         >
-          <a
-            :href="item.href"
-            target="_blank"
-            class="font-extrabold text-transparent text-xl bg-clip-text bg-gradient-to-r from-red-400 to-yellow-200"
-          >
-            {{ item.title }}
-          </a>
+          <div class="flex flex-row justify-between">
+            <a
+              :href="item.href"
+              target="_blank"
+              class="font-extrabold text-transparent text-xl bg-clip-text bg-gradient-to-r from-red-400 to-yellow-200"
+            >
+              {{ item.title }}
+            </a>
+            <span class="text-xs text-lime-300">{{ item.cat }}</span>
+          </div>
           <h3 v-if="item.desc1" class="text-[0.8rem] italic text-gray-400">
             {{ item.desc1 }}
           </h3>

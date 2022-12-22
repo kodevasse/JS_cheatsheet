@@ -148,39 +148,39 @@ import { useStoreCommon } from "@/stores/storeCommon";`;
         v-if="storeCommon.showAddNewCode"
       >
         <div
-          class="bg-gray-900 bg-opacity-70 rounded-md flex flex-col flex-wrap items-center w-1/2 p-4 space-y-2"
+          class="bg-gray-900 bg-opacity-70 rounded-md flex flex-col flex-wrap items-center sm:w-1/2 p-4 space-y-2"
         >
-          <div class="w-full flex justify-center flex-row">
+          <div class="w-full flex justify-center sm:flex-row flex-col">
             <input
               type="text"
               placeholder="Title"
-              class="border text-xl p-1 w-2/5 bg-gray-900 placeholder:text-teal-400 rounded-md border-gray-700 focus:outline-none focus:bg-gray-800"
+              class="border text-xl p-1 sm:w-2/5 bg-gray-900 placeholder:text-teal-400 rounded-md border-gray-700 focus:outline-none focus:bg-gray-800"
               v-model="newTitle"
             />
             <input
               type="text"
               placeholder="Category"
-              class="border bg-gray-900 placeholder:text-teal-400 rounded-md border-gray-700 p-1 ml-2 w-1/6 focus:outline-none focus:bg-gray-800"
+              class="border bg-gray-900 placeholder:text-teal-400 rounded-md border-gray-700 p-1 sm:ml-2 sm:w-1/6 focus:outline-none focus:bg-gray-800"
               v-model="newCat"
             />
             <input
               type="text"
               placeholder="URL to docs.."
-              class="border bg-gray-900 placeholder:text-teal-400 rounded-md border-gray-700 p-1 ml-2 w-2/5 focus:outline-none focus:bg-gray-800"
+              class="border bg-gray-900 placeholder:text-teal-400 rounded-md border-gray-700 p-1 sm:ml-2 sm:w-2/5 focus:outline-none focus:bg-gray-800"
               v-model="newHref"
             />
           </div>
-          <div class="w-full flex justify-center flex-row">
+          <div class="w-full flex justify-center sm:flex-row">
             <input
               type="text"
               placeholder="Description 1..."
-              class="border bg-gray-900 placeholder:text-orange-400 placeholder:opacity-60 rounded-md w-1/2 border-orange-400 border-opacity-40 p-1 ml-4 focus:outline-none focus:bg-gray-800"
+              class="border bg-gray-900 placeholder:text-orange-400 placeholder:opacity-60 rounded-md sm:w-1/2 border-orange-400 border-opacity-40 p-1 ml-4 focus:outline-none focus:bg-gray-800"
               v-model="newDesc1"
             />
             <input
               type="text"
               placeholder="Code line 1..."
-              class="border bg-gray-900 placeholder:text-orange-400 rounded-md w-1/2 ml-2 border-orange-400 border-opacity-40 p-1 mr-4 placeholder:opacity-60 focus:outline-none focus:bg-gray-800"
+              class="border bg-gray-900 placeholder:text-orange-400 rounded-md sm:w-1/2 ml-2 border-orange-400 border-opacity-40 p-1 mr-4 placeholder:opacity-60 focus:outline-none focus:bg-gray-800"
               v-model="newCode1"
             />
           </div>
@@ -234,11 +234,19 @@ import { useStoreCommon } from "@/stores/storeCommon";`;
             v-model="newArray1"
           />
           <div class="w-2/3 flex flex-row justify-between items-center">
-            <button class="btn btn-success" @click="addToFirestore()">
-              Add
-            </button>
+            <div
+              @click="addToFirestore()"
+              class="p-0.5 rounded-md bg-gradient-to-r from-teal-200 to-lime-300"
+            >
+              <button
+                class="hover:bg-gray-800 transition-all px-6 py-2 text-teal-500 bg-gray-900"
+              >
+                Add to site
+              </button>
+            </div>
             <button
               class="btn btn-xs btn-warning"
+              disabled
               @click="showEditDelete = !showEditDelete"
             >
               Show delete

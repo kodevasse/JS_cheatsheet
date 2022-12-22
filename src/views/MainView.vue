@@ -360,7 +360,7 @@ onMounted(() => {
     </Transition>
 
     <div class="p-2 sm:p-3 sm:pl-4">
-      <div class="flex flex-col sm:flex-row sm:flex-wrap gap-4">
+      <div class="flex flex-col sm:flex-row sm:flex-wrap gap-4 justify-center">
         <div
           v-for="item in itemsFiltered"
           class="bg-slate-900 space-y-0.5 bg-opacity-60 p-5 sm:px-4 rounded-md xl:max-w-2xl md:max-w-4xl h-fit max-h-72 overflow-y-auto"

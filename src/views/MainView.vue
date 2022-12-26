@@ -2,7 +2,8 @@
 import { ref, computed, reactive, onMounted, watch } from "vue";
 import { useStoreSheet } from "@/stores/storeSheet";
 import { useStoreCommon } from "@/stores/storeCommon";
-import "highlight.js/styles/stackoverflow-dark.css";
+import "highlight.js/styles/night-owl.css";
+// import "highlight.js/styles/panda-syntax-dark.css";
 
 const storeSheet = useStoreSheet();
 const storeCommon = useStoreCommon();

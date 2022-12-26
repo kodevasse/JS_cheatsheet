@@ -123,18 +123,18 @@ export const useStoreSheet = defineStore("storeSheet", {
   getters: {
     getItemsCount: (state) => {
       return (id) => {
-        return state.notes.filter((note) => note.id === id)[0].content;
+        return state.items.filter((item) => item.id === id)[0].length;
       };
     },
     getItemsCount: (state) => {
       return state.items.length;
     },
-    totalCharactersCount: (state) => {
-      let count = 0;
-      state.notes.forEach((note) => {
-        count += note.content.length;
+    totalCharactersItem: (state) => {
+      let item = 0;
+      state.items.forEach((item) => {
+        item += item.length;
       });
-      return count;
+      return item;
     },
   },
 });

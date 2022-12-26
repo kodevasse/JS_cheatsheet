@@ -25,12 +25,21 @@ storeSheet.init();
           >
           <RouterLink
             class="p-1 mr-4 hover:text-teal-500 text-lime-600"
+            to="/cheatsheet"
+          >
+            Cheatsheets<span
+              class="absolute text-[0.65rem] text-green-500 -ml-8 -mt-0.5"
+            ></span>
+          </RouterLink>
+          <button
+            class="p-1 mr-4 hover:text-teal-500 text-lime-600"
             to="/payment"
-            >Payment<span
+          >
+            Payment<span
               class="absolute text-[0.65rem] text-green-500 -ml-8 -mt-0.5"
               >ongoing</span
-            ></RouterLink
-          >
+            >
+          </button>
           <RouterLink
             class="p-1 mr-4 hover:text-teal-500 text-lime-600"
             to="/payment"
@@ -56,3 +65,10 @@ storeSheet.init();
     </main>
   </div>
 </template>
+
+<style>
+html {
+  overflow-x: hidden;
+  margin-right: calc(-1 * (100vw - 100%));
+}
+</style>
